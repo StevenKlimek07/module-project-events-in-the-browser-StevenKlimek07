@@ -36,9 +36,9 @@ function moduleProject2() {
       square.classList.add('square')
       row.appendChild(square)
       square.addEventListener('click', () => {
-        
+
         // 👉 TASK 2 - Use a click handler to target a square 👈
-        
+
         if (!square.classList.contains('targeted')) {
           document.querySelector('.targeted').classList.remove('targeted')
           square.classList.add('targeted')
@@ -71,17 +71,52 @@ function moduleProject2() {
 
   document.addEventListener('keydown', evt => {
     // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈\
-    console.log(evt)
-    let isUp
-    let isDown
-    let isLeft
-    let isRight
+
+    let isUp = evt.key === keys.up
+    let isDown = evt.key === keys.down
+    let isLeft = evt.key === keys.left
+    let isRight = evt.key === keys.right
+    let isSpaceBar = evt.key === keys.space
+
+    let targeted = document.querySelector('.targeted')
+
+    if (isUp) {
+      if (targeted.parentElement.previousElementSibling) {
+        let idx = Array.from(targeted.parentElement.children).indexOf(targeted)
+        targeted.classList.remove('targeted')
+        targeted.parentElement.previousElementSibling.children[idx].classList.add('targeted')
+      }
 
 
-    // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
+    } else if (isDown) {
+      if (targeted.parentElement.nextElementSibling) {
+        let idx = Array.from(targeted.parentElement.children).indexOf(targeted)
+        targeted.classList.remove('targeted')
+        targeted.parentElement.nextElementSibling.children[idx].classList.add('targeted')
+      }
+    }
+      else if (isLeft) {
+        if (targeted.previousElementSibling) {
+          targeted.classList.remove('targeted')
+          targeted.previousElementSibling.classList.add('targeted')
+        }
 
-    // 👉 TASK 5 - End the game 👈
-  })
+
+      }
+      else if (isRight) {
+        if (targeted.nextElementSibling) {
+          targeted.classList.remove('targeted')
+          targeted.nextElementSibling.classList.add('targeted')
+        }
+      }
+
+
+
+      // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
+
+
+      // 👉 TASK 5 - End the game 👈
+    })
   // 👆 WORK WORK ABOVE THIS LINE 👆
 }
 
