@@ -127,7 +127,14 @@ function moduleProject2() {
        if (!liveMosquitoes.length) {
         let elapsed = getTimeElapsed()
         document.querySelector('p.info').textContent =
-        `Ex`
+        `Extermination completed in ${elapsed / 1000} seconds!`
+
+        let restartBtn = document.createElement('button')
+        restartBtn.textContent = 'Restart'
+        restartBtn.addEventListener('click', () => {
+          location.reload()
+        })
+        document.querySelector('h2').insertAdjacentElement("beforeend", restartBtn)
        }
 
 
