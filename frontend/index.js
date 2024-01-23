@@ -115,30 +115,21 @@ function moduleProject2() {
       // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
       else if (isSpaceBar) {
         let mosquito = targeted.firstChild
-
         if (mosquito && mosquito.dataset.status === 'alive') {
           mosquito.dataset.status = 'dead'
           mosquito.parentElement.style.backgroundColor = 'red'
         }
+        
       } 
 
       // 👉 TASK 5 - End the game 👈
-
-      let liveMosquitoes = document.querySelector('[data-status=alive]')
-
-      if (!liveMosquitoes.length) {
+       let liveMosquitoes = document.querySelectorAll('[data-status=alive]')
+       if (!liveMosquitoes.length) {
         let elapsed = getTimeElapsed()
         document.querySelector('p.info').textContent =
-        `Extermination completed in ${elapsed / 1000} seconds!`
+        `Ex`
+       }
 
-        let restartBtn = document.createElement('button')
-        restartBtn.textContent = 'Restart'
-        restartBtn.addEventListener('click', () => {
-          location.reload()
-        })
-        document.querySelector('h2').insertAdjacentElement('beforeend', restartBtn)
-        
-      } 
 
 
 
